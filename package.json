@@ -1,0 +1,24 @@
+{
+  "name": "app-ms-user",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
+  "engines": {
+    "node": "8.11.x",
+    "npm": "6.5.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-bearer-token": "^2.2.0",
+    "md5": "^2.2.1",
+    "memory-cache": "^0.2.0",
+    "moment": "^2.23.0",
+    "npm": "^6.5.0",
+    "sqlite3": "^4.0.4"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  }
+}
