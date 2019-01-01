@@ -1,6 +1,6 @@
-# App Fuelo Microservice
+# App Fuelo Microservice - MVC Domain Driven Design
 
-An app demonstrating simple API implementation with NodeJs, Express and Sqlite3
+An app demonstrating simple MVC Domain Driven Design API implementation with NodeJs, Express and Sqlite3
 
 The `api` uri preceeds all API endpoints and the following endpoints are currently available
 * POST `/sso/authenticate` - {"email": "demo@nodomain.com", "password": "123"}
