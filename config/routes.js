@@ -5,6 +5,10 @@ var AuthController = require('../src/Http/Controller/AuthController');
 var FuelController = require('../src/Http/Controller/FuelController');
 var Brandontroller = require('../src/Http/Controller/BrandController');
 var ProvinceController = require('../src/Http/Controller/ProvinceController');
+var AveragePriceController = require('../src/Http/Controller/AveragePriceController');
+var GasstationController = require('../src/Http/Controller/GasstationController');
+var NearController = require('../src/Http/Controller/NearController');
+var NewsController = require('../src/Http/Controller/NewsController');
 
 // Set default API response
 router.get('/', function (req, res) {
@@ -41,6 +45,24 @@ router.route('/provinces')
     .get(ProvinceController.index);
 router.route('/provinces/:id')
     .get(ProvinceController.view);
+
+// AveragePrice
+router.route('/average-prices')
+    .get(AveragePriceController.index);
+
+// Gasstations
+router.route('/gasstations')
+    .get(GasstationController.index);
+router.route('/gasstations/:id')
+    .get(GasstationController.view);
+
+// NearController
+router.route('/nears')
+    .get(NearController.index);
+
+// NewsController
+router.route('/news')
+    .get(NewsController.index);
 
 // Export API routes
 module.exports = router;

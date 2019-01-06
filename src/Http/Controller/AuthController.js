@@ -1,7 +1,7 @@
 var request = require('request');
 var md5 = require('md5');
 var moment = require('moment');
-var cache = require('memory-cache');
+var cacheService = require('../../Infrastructure/Service/CacheService');
 var config = require('../../../config/params');
 
 var userService = require('../../Application/Service/UserService');
@@ -42,14 +42,14 @@ exports.authenticate = function (req, res) {
                 if (err) {
                     throw new EntityNotFoundException(EntityNotFoundException.getMessage());
                 }
+                // clear all cache
+                cacheService.clear();
 
                 if (user === undefined) {
                     userService.syncUser({id: userData.id, first_name: userData.firstName, last_name: userData.lastName, email: userData.email}, function (err) {
                         if (err) {
                             throw new EntitySaveException(EntitySaveException.getMessage());
                         }
-
-                        cache.clear();
 
                         res.json({
                             status: "success",

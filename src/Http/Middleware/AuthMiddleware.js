@@ -1,6 +1,6 @@
 var request = require('request');
 var url = require('url');
-var cache = require('memory-cache');
+var cacheService = require('../../Infrastructure/Service/CacheService');
 var config = require('../../../config/params');
 
 var UnauthorizedException = require('../../Application/Exception/UnauthorizedException');
@@ -21,7 +21,7 @@ exports.AuthMiddleware = function (req, res, next) {
                     data: {}
                 });
             } else {
-                var requestCache = cache.get('sso_verify');
+                var requestCache = cacheService.get('sso_verify');
                 if (requestCache) {
                     var token = requestCache;
                     if (token.verify) {
@@ -38,7 +38,7 @@ exports.AuthMiddleware = function (req, res, next) {
                         if (err) {
                             throw err;
                         }
-                        cache.put('sso_verify', body.data, config.cacheDuration);
+                        cacheService.put('sso_verify', body.data, config.cacheDuration);
                         var token = body.data;
                         if (token.verify) {
                             next();
